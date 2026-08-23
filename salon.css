@@ -1,0 +1,356 @@
+/* ============================================ */
+/* CSS C5 - DETAIL LIST ITEMS                   */
+/* ============================================ */
+.detail-list { display: flex; flex-direction: column; gap: 8px; }
+
+.detail-list-item {
+    display: flex;
+    flex-direction: column;
+    background: var(--list-item-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.detail-list-item:hover {
+    background: var(--list-item-hover);
+    border-color: var(--text-secondary);
+}
+
+.detail-list-item.expanded {
+    border-color: var(--text-primary);
+    background: var(--card-bg);
+}
+
+.detail-list-main {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 22px;
+    gap: 6px;
+}
+
+.detail-list-km {
+    font-size: 9.5px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    min-width: 48px;
+    text-align: right;
+    text-transform: uppercase;
+    font-family: 'Fraunces', serif;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+    flex-shrink: 0;
+}
+
+.detail-list-km.km-1,
+.detail-list-km.km-2  { color: var(--km-green); }
+.detail-list-km.km-3  { color: #4a8f3e; }
+.detail-list-km.km-4  { color: #6a9038; }
+.detail-list-km.km-5  { color: #8a8032; }
+.detail-list-km.km-6  { color: #a06e2c; }
+.detail-list-km.km-7  { color: #b25a26; }
+.detail-list-km.km-8  { color: #b84a24; }
+.detail-list-km.km-9,
+.detail-list-km.km-10,
+.detail-list-km.km-far { color: var(--km-red); }
+
+body.theme-dark .detail-list-km.km-1,
+body.theme-dark .detail-list-km.km-2  { color: var(--km-green); }
+body.theme-dark .detail-list-km.km-3  { color: #7cbd7c; }
+body.theme-dark .detail-list-km.km-4  { color: #96b16d; }
+body.theme-dark .detail-list-km.km-5  { color: #b0a55e; }
+body.theme-dark .detail-list-km.km-6  { color: #c69454; }
+body.theme-dark .detail-list-km.km-7  { color: #d68258; }
+body.theme-dark .detail-list-km.km-8  { color: #dc7060; }
+body.theme-dark .detail-list-km.km-9,
+body.theme-dark .detail-list-km.km-10,
+body.theme-dark .detail-list-km.km-far { color: var(--km-red); }
+
+.detail-list-status {
+    font-size: 9.5px;
+    font-weight: 400;
+    min-width: 48px;
+    text-align: left;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-family: 'Fraunces', serif;
+    flex-shrink: 0;
+}
+
+.detail-list-status.open   { color: var(--status-open); }
+.detail-list-status.closed { color: var(--status-closed); }
+
+.detail-list-name {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    padding: 0 6px;
+    line-height: 1.3;
+    font-weight: 500;
+    font-size: 13.5px;
+    letter-spacing: -0.01em;
+    font-family: 'Fraunces', serif;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detail-list-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease,
+                margin-top 0.4s ease;
+    text-align: center;
+    margin-top: 0;
+    width: 100%;
+    position: relative;
+}
+
+.detail-list-item.expanded .detail-list-details {
+    max-height: 1200px;
+    opacity: 1;
+    margin-top: 14px;
+}
+
+.detail-list-item.expanded .detail-list-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.detail-list-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 0 4px;
+}
+
+.detail-list-views,
+.detail-list-reviews {
+    font-family: 'Fraunces', serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 4px 8px;
+    transition: color 0.3s, transform 0.2s;
+    flex: 1;
+    text-align: center;
+}
+
+.detail-list-views   { text-align: left; }
+.detail-list-reviews { text-align: right; }
+
+.detail-list-views:hover,
+.detail-list-reviews:hover { color: var(--text-primary); }
+
+.detail-list-views:active,
+.detail-list-reviews:active { transform: scale(0.95); }
+
+.detail-list-views strong,
+.detail-list-reviews strong {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-left: 6px;
+    letter-spacing: 0.02em;
+    font-family: 'Fraunces', serif;
+}
+
+/* ============================================ */
+/* CSS C6 - SALON ICONS ROW                     */
+/* ============================================ */
+.salon-icon-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.salon-icon-btn {
+    height: 38px;
+    background: var(--salon-icon-bg);
+    color: var(--salon-icon-color);
+    border: 1px solid var(--salon-icon-border);
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.3s ease;
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.salon-icon-btn:hover  { border-color: var(--text-primary); }
+.salon-icon-btn:active { transform: scale(0.94); }
+
+.salon-icon-btn.active {
+    background: var(--salon-icon-active-bg);
+    border-color: var(--salon-icon-active-border);
+    color: var(--salon-icon-active-color);
+}
+
+.salon-icon-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--salon-icon-color);
+    fill: none;
+    stroke-width: 1.75;
+    pointer-events: none;
+    transition: stroke 0.3s;
+}
+
+.salon-icon-btn.active svg { stroke: var(--salon-icon-active-color); }
+
+.salon-icon-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    border-color: var(--salon-icon-disabled-border);
+    background: transparent;
+    color: var(--salon-icon-disabled-color);
+}
+
+.salon-icon-btn.disabled svg  { stroke: var(--salon-icon-disabled-color); }
+.salon-icon-btn.disabled:hover { border-color: var(--salon-icon-disabled-border); transform: none; }
+.salon-icon-btn.disabled:active { transform: none; }
+
+/* ============================================ */
+/* CSS C7 - SALON CONTENT                       */
+/* ============================================ */
+.salon-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+.salon-content-btn {
+    width: 100%;
+    height: 38px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: var(--radius-xs);
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.2s;
+    text-align: center;
+    line-height: 1.2;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    text-transform: none;
+}
+
+.salon-content-btn:hover  { background: var(--btn-hover-bg); }
+.salon-content-btn:active { transform: scale(0.98); }
+
+.salon-content-btn a,
+a.salon-content-btn { color: var(--btn-text); text-decoration: none; }
+
+.salon-hours-nav {
+    width: 100%;
+    height: 38px;
+    display: grid;
+    grid-template-columns: 38px 1fr 38px;
+    align-items: center;
+    justify-items: center;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: var(--radius-xs);
+    padding: 0;
+}
+
+.salon-hours-arrow {
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: none;
+    color: var(--btn-text);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    border-radius: var(--radius-xs);
+}
+
+.salon-hours-arrow:hover { opacity: 0.65; }
+
+.salon-hours-text {
+    font-size: 13px;
+    color: var(--btn-text);
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 4px;
+    letter-spacing: 0.01em;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+}
+
+.salon-hours-text .day-name { font-weight: 500; }
+.salon-hours-text .day-time { margin-left: 8px; opacity: 0.75; font-weight: 400; }
+
+.salon-hours-text .cal-booked.available  { color: var(--km-green); font-weight: 500; opacity: 1; }
+.salon-hours-text .cal-booked.full       { color: var(--km-red);   font-weight: 500; opacity: 1; }
+.salon-hours-text .cal-booked.closed-cal { color: var(--btn-text); opacity: 0.6; }
+
+.salon-price-display {
+    width: 100%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: var(--radius-xs);
+    padding: 0 16px;
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.3s;
+    gap: 16px;
+}
+
+.salon-price-display:hover { background: var(--btn-hover-bg); }
+
+.salon-price-display .price-label {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.salon-price-display .price-value {
+    font-weight: 400;
+    opacity: 0.85;
+    letter-spacing: 0.01em;
+}
