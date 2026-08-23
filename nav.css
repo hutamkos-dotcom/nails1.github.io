@@ -1,0 +1,52 @@
+/* ============================================ */
+/* CSS E1 - BOTTOM NAV                          */
+/* ============================================ */
+.bottom-nav {
+    position: fixed;
+    left: 50%; bottom: 20px;
+    transform: translateX(-50%) translateY(160%);
+    z-index: 2000;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+
+.bottom-nav.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bottom-nav.hidden-by-overlay {
+    transform: translateX(-50%) translateY(160%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.bottom-nav-btn {
+    background: rgba(15,15,15,0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    width: 46px; height: 46px;
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: transform 0.2s ease, background 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.bottom-nav-btn:hover  { background: rgba(30,30,30,0.95); }
+.bottom-nav-btn:active { transform: scale(0.9); }
+
+.bottom-nav-btn svg {
+    width: 20px; height: 20px;
+    pointer-events: none;
+    stroke: #ffffff;
+    stroke-width: 1.75;
+}
