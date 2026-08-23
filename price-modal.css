@@ -1,0 +1,186 @@
+/* ============================================ */
+/* CSS F4 - PRICE INFO MODAL                    */
+/* ============================================ */
+.price-info-region-top {
+    margin: 4px 0 14px 0;
+    background: var(--btn-bg);
+    border-color: var(--btn-bg);
+    text-align: center;
+    padding: 20px 18px;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--btn-bg);
+}
+
+.price-info-region-top .label {
+    color: var(--btn-text);
+    opacity: 0.7;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+}
+
+.price-info-region-top .value {
+    color: var(--btn-text);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-family: 'Fraunces', serif;
+    margin-bottom: 6px;
+}
+
+.price-info-region-top .sublabel {
+    color: var(--btn-text);
+    opacity: 0.65;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+}
+
+.price-info-salon-card {
+    background: var(--list-item-hover);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    padding: 20px 18px;
+    margin-bottom: 18px;
+}
+
+.price-info-salon-name {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+    line-height: 1.2;
+}
+
+.price-info-salon-card .price-info-stats {
+    background: transparent;
+    border: none;
+    padding: 0 0 14px 0;
+    margin: 0 0 14px 0;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 24px;
+    grid-template-columns: unset;
+}
+
+.price-info-salon-card .price-info-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    text-align: left;
+}
+
+.price-info-salon-card .price-info-stat .label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0;
+    font-family: 'Fraunces', serif;
+}
+
+.price-info-salon-card .price-info-stat .value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
+    font-family: 'Fraunces', serif;
+}
+
+.price-info-section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.price-info-salon-card .price-service-list {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.price-service-list {
+    margin: 4px 0 16px 0;
+    padding: 14px 16px;
+    background: var(--list-item-hover);
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--border-color);
+}
+
+.price-service-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Fraunces', serif;
+    font-size: 12.5px;
+}
+
+.price-service-item:last-child { border-bottom: none; }
+
+.price-service-name {
+    color: var(--text-primary);
+    font-weight: 200;
+    text-align: left;
+    letter-spacing: -0.005em;
+}
+
+.price-service-price {
+    color: var(--text-primary);
+    font-weight: 200;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    text-align: right;
+    min-width: 65px;
+}
+
+.price-info-section-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
+    text-transform: none;
+    margin: 20px 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.price-info-section-heading:first-of-type { margin-top: 8px; }
+
+.price-info-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    text-align: justify;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+}
+
+.price-info-desc strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
