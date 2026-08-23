@@ -1,0 +1,259 @@
+/* ============================================ */
+/* CSS F1 - MODAL - KÖZÖS ALAPOK                */
+/* ============================================ */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,15,15,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    padding: 20px;
+    overscroll-behavior: contain;
+    touch-action: none;
+}
+
+.modal.active { display: flex; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content {
+    background: var(--modal-content-bg);
+    width: 100%;
+    max-width: 340px;
+    max-height: 80vh;
+    border-radius: var(--radius-xs);
+    position: relative;
+    animation: modalPopIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+}
+
+.modal-header {
+    position: relative;
+    flex-shrink: 0;
+    padding: 20px 24px 12px 24px;
+    z-index: 3;
+    background: var(--modal-content-bg);
+}
+
+.modal-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--text-primary);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-align: center;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.modal-header .modal-subtitle {
+    font-family: 'Fraunces', serif;
+    text-align: center;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    font-weight: 400;
+}
+
+.modal-body {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    isolation: isolate;
+    padding-bottom: 20px;
+}
+
+.modal-body-scroll {
+    position: absolute;
+    inset: 0 0 20px 0;
+    overflow-y: auto;
+    padding: 14px 24px 14px 24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+}
+
+.modal-body-scroll::-webkit-scrollbar { display: none; }
+
+.modal-fade-top {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 12px;
+    background: linear-gradient(to bottom,
+        rgba(var(--modal-fade-rgb), 1) 0%,
+        rgba(var(--modal-fade-rgb), 0) 100%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.modal-fade-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 20px;
+    height: 18px;
+    background: linear-gradient(to top,
+        rgba(var(--modal-fade-rgb), 1) 0%,
+        rgba(var(--modal-fade-rgb), 0) 100%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.modal-body-spacer {
+    height: 10px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.reviews-modal-content {
+    max-width: 373px;
+    width: calc(100vw - 20px);
+    height: 500px;
+    max-height: calc(100vh - 40px);
+}
+
+.price-info-modal-content {
+    max-width: 373px;
+    width: calc(100vw - 20px);
+    height: 500px;
+    max-height: calc(100vh - 40px);
+}
+
+.modal-content:has(.modal-body) {
+    height: 500px;
+    max-height: calc(100vh - 40px);
+}
+
+.menu-modal-content {
+    max-width: 373px;
+    width: calc(100vw - 20px);
+    height: 500px;
+    max-height: calc(100vh - 40px);
+    padding: 0;
+    border-radius: var(--radius-xs);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@keyframes modalPopIn {
+    from { transform: scale(0.94) translateY(10px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px; right: 14px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text-primary);
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px 10px;
+    z-index: 10;
+    transition: opacity 0.2s;
+    font-family: 'Fraunces', serif;
+}
+
+.modal-close:hover { opacity: 0.6; }
+
+/* ============================================ */
+/* CSS F2 - MENU MODAL                          */
+/* ============================================ */
+.menu-modal-content .menu-header {
+    padding: 26px 32px 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-modal-content .menu-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: var(--text-primary);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.menu-nav {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 0 32px 32px 32px;
+}
+
+.menu-nav::-webkit-scrollbar { display: none; }
+.menu-nav ul { list-style: none; }
+.menu-nav ul li { border-bottom: 1px solid var(--menu-list-border); }
+
+.menu-nav ul li a {
+    display: block;
+    padding: 16px 0;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    transition: color 0.3s, padding-left 0.3s;
+    text-transform: none;
+}
+
+.menu-nav ul li a:hover { color: var(--text-secondary); padding-left: 10px; }
+
+/* ============================================ */
+/* CSS F3 - RESULT MODAL                        */
+/* ============================================ */
+#resultContent p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-family: 'Fraunces', serif;
+}
+
+#resultContent h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+#resultContent .result-item {
+    padding: 14px 16px;
+    background: var(--list-item-hover);
+    border-radius: var(--radius-xs);
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    font-family: 'Fraunces', serif;
+}
+
+#resultContent .result-item strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 6px;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14px;
+}
