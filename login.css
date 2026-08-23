@@ -1,188 +1,34 @@
-/* ============================================ */
-/* CSS D1 - LOGIN CARD                          */
-/* ============================================ */
-.login-section {
-    padding: 0 var(--gap) var(--gap) var(--gap);
-    background: var(--page-bg);
-    transition: background 0.4s ease;
-}
+// ============================================
+// LOGIN
+// ============================================
+function initLogin() {
+    const loginForm = $('loginForm');
+    const loginEmail = $('loginEmail');
+    const loginPassword = $('loginPassword');
+    const passwordToggle = $('passwordToggle');
+    const stayLoggedIn = $('stayLoggedIn');
+    const forgotPassword = $('forgotPassword');
+    const facebookLogin = $('facebookLogin');
+    const googleLogin = $('googleLogin');
+    const registerBtn = $('registerBtn');
 
-.login-card {
-    position: relative;
-    width: 100%;
-    height: var(--login-card-height);
-    border-radius: var(--radius-xs);
-    overflow: hidden;
-    box-shadow: var(--card-shadow-large);
-    transition: box-shadow 0.4s ease;
-}
+    passwordToggle.addEventListener('click', () => {
+        loginPassword.type = loginPassword.type === 'password' ? 'text' : 'password';
+        passwordToggle.classList.toggle('active');
+    });
 
-.login-background {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://raw.githubusercontent.com/hutamkos-dotcom/images/refs/heads/main/Firefly_Close-up%20of%20a%20hand%20with%20white%20nails%2C%20wearing%20a%20gold%20watch%2C%20next%20to%20a%20phone%20on%20a%20light%20606020.PNG');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-}
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = loginEmail.value.trim();
+        const pw = loginPassword.value.trim();
+        if (!email || !pw) { showResult(`<h2>Hiányzó adatok</h2><p>Töltsd ki mindkét mezőt!</p>`); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showResult(`<h2>Érvénytelen email</h2><p>Adj meg érvényes email címet!</p>`); return; }
+        showResult(`<h2>Bejelentkezés</h2><p>Sikeres kísérlet! 🎉</p><p>Email: ${email}</p>`);
+    });
 
-.login-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-        rgba(15,15,15,0.92) 0%,
-        rgba(15,15,15,0.88) 30%,
-        rgba(15,15,15,0.75) 50%,
-        rgba(15,15,15,0.4)  70%,
-        rgba(15,15,15,0.1)  90%,
-        rgba(15,15,15,0)   100%);
-    z-index: 2;
-}
-
-.login-content {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    height: 100%;
-    padding: 28px 22px 22px 22px;
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form { display: flex; flex-direction: column; width: 100%; height: 100%; }
-.login-top-block { display: flex; flex-direction: column; gap: 14px; }
-
-.login-title {
-    text-align: center;
-    color: #fff;
-    font-family: 'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1.4;
-    letter-spacing: -0.02em;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-    margin-bottom: 10px;
-}
-
-.login-input-wrapper {
-    position: relative;
-    width: 100%;
-    background: rgba(255,255,255,0.98);
-    border-radius: var(--radius-xs);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    overflow: hidden;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    backdrop-filter: blur(10px);
-}
-
-.login-input-wrapper input {
-    flex: 1;
-    height: 100%;
-    padding: 0 20px;
-    border: none;
-    background: transparent;
-    font-family: 'Fraunces', serif;
-    font-size: 13px;
-    color: #1a1a1a;
-    outline: none;
-    text-align: center;
-    letter-spacing: -0.01em;
-    font-weight: 400;
-}
-
-.login-input-wrapper input::placeholder { color: #a09990; font-weight: 300; }
-
-.password-toggle {
-    position: absolute;
-    right: 0; top: 0;
-    height: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #1a1a1a;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s;
-}
-
-.password-toggle.active svg rect { fill: #1a1a1a; }
-
-.login-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin-top: 6px;
-    flex-wrap: wrap;
-}
-
-.login-links a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    transition: color 0.3s;
-    font-family: 'Fraunces', serif;
-}
-
-.login-links a:hover { color: #ffffff; text-decoration: underline; }
-
-.login-separator { color: rgba(255,255,255,0.6); font-size: 11px; }
-.login-spacer       { flex: 1.4; min-height: 32px; }
-.login-spacer-small { flex: 0.5; min-height: 16px; }
-.login-middle-block { display: flex; flex-direction: column; gap: 14px; }
-
-.login-btn {
-    width: 100%;
-    height: 42px;
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: var(--radius-xs);
-    font-family: 'Fraunces', serif;
-    font-size: 14px;
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    letter-spacing: 0.01em;
-    text-transform: none;
-}
-
-.login-btn:hover {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.6);
-    transform: translateY(-1px);
-}
-
-.login-social { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.login-bottom-block { display: flex; flex-direction: column; gap: 14px; }
-
-.login-register-text {
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 300;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    margin-bottom: 2px;
-    letter-spacing: 0.01em;
-    font-family: 'Fraunces', serif;
-}
-
-.login-recaptcha {
-    text-align: center;
-    color: rgba(255,255,255,0.85);
-    font-size: 10px;
-    line-height: 1.6;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    margin-top: 8px;
-    font-weight: 300;
-    font-family: 'Fraunces', serif;
+    forgotPassword.addEventListener('click', (e) => { e.preventDefault(); showResult(`<h2>Jelszó helyreállítás</h2><p>Fejlesztés alatt.</p>`); });
+    stayLoggedIn.addEventListener('click', (e) => { e.preventDefault(); stayLoggedIn.classList.toggle('active'); });
+    facebookLogin.addEventListener('click', () => showResult(`<h2>Facebook</h2><p>Hamarosan. 📘</p>`));
+    googleLogin.addEventListener('click', () => showResult(`<h2>Google</h2><p>Hamarosan. 🔍</p>`));
+    registerBtn.addEventListener('click', () => showResult(`<h2>Regisztráció</h2><p>Hamarosan. 💅</p>`));
 }
