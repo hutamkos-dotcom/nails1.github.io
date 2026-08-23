@@ -1,0 +1,465 @@
+/* ============================================ */
+/* CALENDAR MODAL                               */
+/* ============================================ */
+
+.calendar-modal- {
+    max-width: 373px;
+    width: calc(100vw - 20px);
+    height: 500px;
+    max-height: calc(100vh - 40px);
+}
+
+/* ============================================ */
+/* MODAL BELSŐ STRUKTÚRA                        */
+/* ============================================ */
+.cal-modal-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 16px 16px 12px 16px;
+    overflow: hidden;
+}
+
+.cal-salon-name {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+    letter-spacing: -0.01em;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+/* ============================================ */
+/* NÉZET VÁLTÓ GOMBOK                           */
+/* ============================================ */
+.cal-view-switcher {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.cal-view-btn {
+    height: 30px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.01em;
+}
+
+.cal-view-btn:hover { border-color: var(--text-primary); }
+
+.cal-view-btn.active {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-color: var(--btn-bg);
+}
+
+/* ============================================ */
+/* NAVIGÁCIÓ                                    */
+/* ============================================ */
+.cal-nav {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.cal-nav-arrow {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    color: var(--text-primary);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, opacity 0.2s;
+    font-family: 'Fraunces', serif;
+}
+
+.cal-nav-arrow:hover { border-color: var(--text-primary); }
+.cal-nav-arrow:active { opacity: 0.6; }
+
+.cal-nav-title {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+/* ============================================ */
+/* GÖRGETHETŐ TARTALOM                          */
+/* ============================================ */
+.cal-scroll-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+}
+
+.cal-scroll-body::-webkit-scrollbar { display: none; }
+
+/* ============================================ */
+/* HAVI NÉZET                                   */
+/* ============================================ */
+.cal-month-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 4px;
+}
+
+.cal-month-weekday {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 0;
+}
+
+.cal-month-weekday.sat { color: var(--sat-color); }
+.cal-month-weekday.sun { color: var(--sun-color); }
+
+.cal-month-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+}
+
+.cal-month-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-primary);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid transparent;
+}
+
+.cal-month-day:hover:not(.empty):not(.other-month) {
+    border-color: var(--border-color);
+    background: var(--list-item-hover);
+}
+
+.cal-month-day.empty {
+    cursor: default;
+    pointer-events: none;
+}
+
+.cal-month-day.other-month {
+    color: var(--text-secondary);
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+}
+
+.cal-month-day.today {
+    background: var(--today-bg);
+    color: #fff;
+    font-weight: 600;
+}
+
+.cal-month-day.today:hover {
+    background: var(--today-bg);
+    border-color: transparent;
+}
+
+.cal-month-day.sat { color: var(--sat-color); }
+.cal-month-day.sun { color: var(--sun-color); }
+.cal-month-day.today.sat,
+.cal-month-day.today.sun { color: #fff; }
+
+.cal-month-day::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: none;
+}
+
+.cal-month-day.status-full::after {
+    display: block;
+    background: var(--status-full);
+}
+
+.cal-month-day.status-available::after {
+    display: block;
+    background: var(--status-available);
+}
+
+.cal-month-day.status-closed {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ============================================ */
+/* HETI NÉZET                                   */
+/* ============================================ */
+.cal-week-container {
+    width: 100%;
+}
+
+.cal-week-header {
+    display: grid;
+    grid-template-columns: 80px repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 4px;
+}
+
+.cal-week-header-spacer {
+    /* üres sarok */
+}
+
+.cal-week-day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    padding: 4px 1px;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+    min-width: 0;
+}
+
+.cal-week-day-header:hover {
+    background: var(--list-item-hover);
+    border-color: var(--border-color);
+}
+
+.cal-week-day-header.today { background: var(--today-bg); }
+
+.cal-week-day-name {
+    font-family: 'Fraunces', serif;
+    font-size: 8px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.cal-week-day-num {
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.cal-week-day-header.sat .cal-week-day-name,
+.cal-week-day-header.sat .cal-week-day-num { color: var(--sat-color); }
+.cal-week-day-header.sun .cal-week-day-name,
+.cal-week-day-header.sun .cal-week-day-num { color: var(--sun-color); }
+.cal-week-day-header.today .cal-week-day-name,
+.cal-week-day-header.today .cal-week-day-num { color: #fff; }
+
+.cal-week-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(7, 1fr);
+    gap: 2px;
+}
+
+.cal-week-time-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cal-week-time-label {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.cal-week-day-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cal-week-slot {
+    height: 28px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+}
+
+.cal-week-slot.free {
+    background: rgba(45, 122, 62, 0.12);
+    color: var(--status-available);
+    border: 1px solid rgba(45, 122, 62, 0.2);
+}
+
+.cal-week-slot.booked {
+    background: rgba(198, 40, 40, 0.1);
+    color: var(--status-closed);
+    border: 1px solid rgba(198, 40, 40, 0.18);
+}
+
+.cal-week-slot.closed {
+    background: var(--list-item-hover);
+    border: 1px solid var(--border-color);
+    opacity: 0.4;
+}
+
+body.theme-dark .cal-week-slot.free {
+    background: rgba(94, 201, 122, 0.1);
+    border-color: rgba(94, 201, 122, 0.2);
+}
+
+body.theme-dark .cal-week-slot.booked {
+    background: rgba(255, 107, 107, 0.1);
+    border-color: rgba(255, 107, 107, 0.18);
+}
+
+/* ============================================ */
+/* NAPI NÉZET                                   */
+/* ============================================ */
+.cal-day-header-info {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cal-day-header-info .day-full-name {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.cal-day-header-info .day-summary {
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 3px;
+    letter-spacing: 0.01em;
+}
+
+.cal-day-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cal-day-slot {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+}
+
+.cal-day-slot-time {
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-align: right;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.cal-day-slot-bar {
+    height: 28px;
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.cal-day-slot-bar.free {
+    background: rgba(45, 122, 62, 0.1);
+    color: var(--status-available);
+    border: 1px solid rgba(45, 122, 62, 0.2);
+}
+
+.cal-day-slot-bar.booked {
+    background: rgba(198, 40, 40, 0.08);
+    color: var(--status-closed);
+    border: 1px solid rgba(198, 40, 40, 0.18);
+}
+
+.cal-day-slot-bar.closed {
+    background: var(--list-item-hover);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    opacity: 0.5;
+}
+
+body.theme-dark .cal-day-slot-bar.free {
+    background: rgba(94, 201, 122, 0.08);
+    border-color: rgba(94, 201, 122, 0.2);
+}
+
+body.theme-dark .cal-day-slot-bar.booked {
+    background: rgba(255, 107, 107, 0.08);
+    border-color: rgba(255, 107, 107, 0.18);
+}
+
+.cal-day-closed-msg {
+    text-align: center;
+    padding: 30px 0;
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
