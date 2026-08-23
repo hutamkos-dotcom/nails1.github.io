@@ -1,0 +1,65 @@
+/* ============================================ */
+/* HOURS MODAL                                  */
+/* ============================================ */
+.hours-modal-section {
+    margin-bottom: 18px;
+}
+
+.hours-modal-section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hours-modal-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.hours-modal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 4px;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+}
+
+.hours-modal-row:last-child {
+    border-bottom: none;
+}
+
+.hours-modal-day {
+    color: var(--text-primary);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+}
+
+.hours-modal-time {
+    color: var(--text-primary);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+.hours-closed {
+    color: var(--status-closed);
+}
+
+.hours-holiday-yes {
+    color: var(--status-open);
+    font-weight: 400;
+}
+
+.hours-holiday-no {
+    color: var(--status-closed);
+    font-weight: 400;
+}
