@@ -1,0 +1,426 @@
+/* ============================================ */
+/* CSS B1 - HERO SZEKCIÓ                        */
+/* ============================================ */
+.hero {
+    padding: var(--gap) var(--gap) 0 var(--gap);
+    background: var(--page-bg);
+    transition: background 0.4s ease;
+}
+
+.hero-card {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--card-shadow-large);
+    cursor: pointer;
+    transition: box-shadow 0.4s ease;
+}
+
+.background-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://raw.githubusercontent.com/hutamkos-dotcom/images/refs/heads/main/Elegant%20Nail%20Polish%20Display%20(1).png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+
+.hero-gradient {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 75%;
+    background: linear-gradient(to top,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.85) 20%,
+        rgba(0,0,0,0.5) 50%,
+        rgba(0,0,0,0.2) 75%,
+        rgba(0,0,0,0) 100%);
+    z-index: 2;
+    pointer-events: none;
+    transition: filter 0.4s ease;
+}
+
+.brand-logo {
+    position: absolute;
+    top: var(--header-icon-top);
+    left: 14px;
+    z-index: 10;
+    background: var(--logo-bg);
+    border: 1px solid var(--logo-border);
+    border-radius: var(--radius-xs);
+    width: var(--header-icon-size);
+    height: var(--header-icon-size);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--logo-text);
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, transform 0.2s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.brand-logo:hover { opacity: 0.9; }
+.brand-logo:active { transform: scale(0.95); }
+
+.brand-logo-short {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.brand-logo-full {
+    display: inline-block;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(-4px);
+    transition: max-width 0.4s ease, opacity 0.3s ease, transform 0.4s ease;
+}
+
+.brand-logo.expanded { width: 120px; }
+.brand-logo.expanded .brand-logo-short { max-width: 0; opacity: 0; overflow: hidden; display: none; }
+.brand-logo.expanded .brand-logo-full { max-width: 130px; opacity: 1; transform: translateX(0); }
+
+.menu-btn {
+    position: absolute;
+    top: var(--header-icon-top);
+    right: 18px;
+    width: 24px;
+    height: var(--header-icon-size);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 6px;
+    padding: 0;
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: var(--menu-icon-thickness);
+    background: var(--menu-icon-color);
+    border-radius: 0;
+    box-shadow: var(--menu-icon-shadow);
+    transition: all 0.3s ease;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 24px 32px 24px;
+    pointer-events: none;
+}
+
+.hero-content > * { pointer-events: auto; }
+
+.hero-title {
+    text-align: center;
+    color: #fff;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    margin-bottom: 28px;
+    transition: opacity 0.3s ease;
+}
+
+/* ============================================ */
+/* CSS B1/2 - SEARCH                            */
+/* ============================================ */
+.search-section {
+    position: relative;
+    margin-bottom: 26px;
+    z-index: 15;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.98);
+    border-radius: var(--radius-xs);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    height: 42px;
+    backdrop-filter: blur(10px);
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-family: 'Fraunces', serif;
+    color: #1a1a1a;
+    background: transparent;
+    height: 100%;
+    text-align: center;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+}
+
+.search-box input::placeholder { color: #a09990; font-weight: 300; }
+
+.search-btn {
+    background: transparent;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    right: 0; top: 0;
+}
+
+.suggestions {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0; right: 0;
+    background: #fff;
+    border-radius: var(--radius-xs);
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    display: none;
+    z-index: 20;
+    border: 1px solid var(--border-color);
+}
+
+body.search-focused .hero-card { overflow: visible !important; }
+body.search-focused .search-section { position: relative; z-index: 100; }
+body.search-focused .suggestions { z-index: 100; }
+
+.suggestions.active { display: block; }
+
+.suggestions li {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #1a1a1a;
+    border-bottom: 1px solid #f0ece5;
+    text-align: center;
+    transition: background 0.2s;
+    font-weight: 400;
+    font-family: 'Fraunces', serif;
+}
+
+.suggestions li.suggestions-header {
+    background: #f5f1eb;
+    color: #6b6660;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    cursor: default;
+    padding: 8px 20px;
+}
+
+.suggestions li.suggestions-header:hover { background: #f5f1eb; }
+.suggestions li:last-child { border-bottom: none; }
+.suggestions li:hover:not(.suggestions-header) { background: #f5f1eb; }
+
+/* ============================================ */
+/* CSS B1/3 - QUOTE                             */
+/* ============================================ */
+.quote-anchor {
+    position: relative;
+    height: var(--quote-anchor-height);
+    width: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.quote-section {
+    position: absolute;
+    inset: 0 0 auto 0;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.quote-section.fade-out { opacity: 0; }
+
+.quote-text {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    letter-spacing: -0.01em;
+}
+
+.quote-author {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    opacity: 0.85;
+    font-family: 'Fraunces', serif;
+}
+
+/* ============================================ */
+/* CSS B2 - FILTER BAR                          */
+/* ============================================ */
+.filter-section {
+    padding: var(--gap) var(--gap) 0 var(--gap);
+    background: var(--page-bg);
+    transition: background 0.4s ease;
+}
+
+.filter-bar { display: flex; gap: 8px; width: 100%; }
+
+.filter-btn {
+    flex: 1;
+    height: 38px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    opacity: 1;
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    filter: none;
+}
+
+.filter-btn:hover {
+    border-color: var(--text-primary);
+    background: transparent;
+    box-shadow: none !important;
+    filter: none;
+}
+
+.filter-btn:focus,
+.filter-btn:focus-visible,
+.filter-btn:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+    filter: none;
+    border-color: var(--text-primary);
+}
+
+.filter-btn:active {
+    transform: scale(0.97);
+    box-shadow: none !important;
+    filter: none;
+}
+
+.filter-btn.active {
+    background: var(--text-primary);
+    color: var(--page-bg);
+    border-color: var(--text-primary);
+    box-shadow: none !important;
+    filter: none;
+}
+
+.filter-btn.active:hover,
+.filter-btn.active:focus,
+.filter-btn.active:focus-visible,
+.filter-btn.active:active {
+    box-shadow: none !important;
+    outline: none !important;
+    filter: none;
+}
+
+/* ============================================ */
+/* CSS B3 - MASONRY GRID                        */
+/* ============================================ */
+.masonry-section {
+    padding: var(--gap);
+    background: var(--page-bg);
+    transition: background 0.4s ease;
+}
+
+.masonry-grid { display: flex; gap: var(--gap); align-items: flex-start; width: 100%; }
+
+.masonry-column {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.masonry-card {
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: none;
+    border: none;
+    transition: box-shadow 0.4s ease;
+    width: 100%;
+    background: var(--card-bg);
+}
+
+.masonry-card:hover { box-shadow: var(--card-shadow-hover); }
+
+.masonry-card:hover .masonry-card-image { transform: scale(1.04); }
+
+.masonry-card-image {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.masonry-card-image.h1 { height: 180px; }
+.masonry-card-image.h2 { height: 220px; }
+.masonry-card-image.h3 { height: 160px; }
+.masonry-card-image.h4 { height: 260px; }
+.masonry-card-image.h5 { height: 200px; }
+.masonry-card-image.h6 { height: 240px; }
+
+.bg-pink      { background: linear-gradient(135deg, #f4d3c8 0%, #e8b8a5 100%); }
+.bg-purple    { background: linear-gradient(135deg, #d4c5d9 0%, #b8a8c4 100%); }
+.bg-peach     { background: linear-gradient(135deg, #f5dcc4 0%, #e8b892 100%); }
+.bg-lavender  { background: linear-gradient(135deg, #dfd3e0 0%, #c8b5cd 100%); }
+.bg-rose      { background: linear-gradient(135deg, #ecc8c4 0%, #d4a8a4 100%); }
+.bg-mint      { background: linear-gradient(135deg, #d4dbd2 0%, #b8c4b5 100%); }
+.bg-coral     { background: linear-gradient(135deg, #e8b8a5 0%, #d49585 100%); }
+.bg-nude      { background: linear-gradient(135deg, #e8c5a0 0%, #c8a075 100%); }
+.bg-berry     { background: linear-gradient(135deg, #c8a4b0 0%, #a88088 100%); }
+.bg-champagne { background: linear-gradient(135deg, #ecd4b0 0%, #d4b896 100%); }
+.bg-plum      { background: linear-gradient(135deg, #a89098 0%, #806870 100%); }
+.bg-blush     { background: linear-gradient(135deg, #f0d4d0 0%, #d8b0ac 100%); }
