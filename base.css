@@ -1,0 +1,224 @@
+/* ============================================ */
+/* CSS A1 - IMPORT FONTS                        */
+/* ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,200;9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+
+
+/* ============================================ */
+/* CSS A2 - RESET & GLOBAL BOX-SIZING           */
+/* ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ============================================ */
+/* CSS A3 - ROOT VÁLTOZÓK (világos alap téma)   */
+/* ============================================ */
+:root {
+    --login-card-height: 520px;
+    --gap: 5px;
+    --radius-lg: 4px;
+    --radius-md: 4px;
+    --radius-sm: 4px;
+    --radius-xs: 4px;
+    --radius-pill: 4px;
+
+    --detail-card-height: 350px;
+    --detail-btn-height: 38px;
+    --detail-collapsed-height: 54px;
+    --edge-zone: 40px;
+    --quote-anchor-height: 60px;
+
+    --header-icon-size: 38px;
+    --header-icon-top: 14px;
+
+    --sat-color: #e88787;
+    --sun-color: #e53935;
+    --today-bg: #6b6660;
+
+    --accent: #6b6660;
+    --accent-hover: #4a453f;
+
+    --like-color: #e53935;
+
+    --page-bg: #faf8f5;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b6660;
+    --border-color: #e8e4dd;
+    --outer-bg: #1a1a1a;
+    --modal-content-bg: #ffffff;
+    --menu-list-border: #e8e4dd;
+    --list-item-bg: #ffffff;
+    --list-item-hover: #f5f1eb;
+    --fade-color: 250, 248, 245;
+
+    --modal-fade-rgb: 255, 255, 255;
+
+    --btn-bg: #1a1a1a;
+    --btn-text: #faf8f5;
+    --btn-hover-bg: #2a2a2a;
+
+    --logo-bg: #ffffff;
+    --logo-text: #1a1a1a;
+    --logo-border: #ffffff;
+
+    --menu-icon-color: #ffffff;
+    --menu-icon-shadow: 0 1px 4px rgba(0,0,0,0.65);
+    --menu-icon-thickness: 2px;
+
+    --bottom-nav-bg: #1a1a1a;
+    --bottom-nav-text: #faf8f5;
+
+    --card-shadow: none;
+    --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.06);
+    --card-shadow-large: 0 12px 40px rgba(0,0,0,0.08);
+
+    --salon-icon-bg: transparent;
+    --salon-icon-color: #1a1a1a;
+    --salon-icon-border: #e8e4dd;
+    --salon-icon-active-bg: #1a1a1a;
+    --salon-icon-active-color: #faf8f5;
+    --salon-icon-active-border: #1a1a1a;
+    --salon-icon-disabled-color: #c8c4bd;
+    --salon-icon-disabled-border: #ede9e2;
+
+    --status-open: #2d7a3e;
+    --status-closed: #c62828;
+    --status-available: #2d7a3e;
+    --status-full: #c62828;
+
+    --review-positive: #2d7a3e;
+    --review-negative: #c62828;
+
+    --km-green: #2d7a3e;
+    --km-red: #c62828;
+}
+
+
+/* ============================================ */
+/* CSS A4 - THEME: DARK                         */
+/* ============================================ */
+body.theme-dark {
+    --page-bg: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --text-primary: #f5f1eb;
+    --text-secondary: #a09990;
+    --border-color: #2a2724;
+    --outer-bg: #000000;
+    --modal-content-bg: #1a1a1a;
+    --menu-list-border: #2a2724;
+    --list-item-bg: #1a1a1a;
+    --list-item-hover: #232120;
+    --fade-color: 26, 26, 26;
+    --modal-fade-rgb: 26, 26, 26;
+
+    --accent: #a09990;
+    --accent-hover: #c0b8ad;
+
+    --btn-bg: #f5f1eb;
+    --btn-text: #0f0f0f;
+    --btn-hover-bg: #ffffff;
+
+    --logo-bg: #000000;
+    --logo-text: #ffffff;
+    --logo-border: #000000;
+
+    --menu-icon-color: #000000;
+    --menu-icon-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    --menu-icon-thickness: 2px;
+
+    --bottom-nav-bg: #1a1a1a;
+    --bottom-nav-text: #f5f1eb;
+
+    --card-shadow: none;
+    --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.4);
+    --card-shadow-large: 0 12px 40px rgba(0,0,0,0.5);
+
+    --salon-icon-bg: transparent;
+    --salon-icon-color: #a09990;
+    --salon-icon-border: #2a2724;
+    --salon-icon-active-bg: #f5f1eb;
+    --salon-icon-active-color: #0f0f0f;
+    --salon-icon-active-border: #f5f1eb;
+    --salon-icon-disabled-color: #3a3733;
+    --salon-icon-disabled-border: #1f1d1b;
+
+    --status-open: #5ec97a;
+    --status-closed: #ff6b6b;
+    --status-available: #5ec97a;
+    --status-full: #ff6b6b;
+
+    --review-positive: #5ec97a;
+    --review-negative: #ff6b6b;
+
+    --km-green: #5ec97a;
+    --km-red: #ff6b6b;
+}
+
+
+/* ============================================ */
+/* CSS A5 - HTML / BODY                         */
+/* ============================================ */
+html, body {
+    font-family: 'Fraunces', serif;
+    background: var(--outer-bg);
+    transition: background 0.4s ease;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+}
+
+body, input, button, textarea, select, a, p, div, span,
+h1, h2, h3, h4, h5, h6, li, label {
+    font-family: 'Fraunces', serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+body.modal-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    touch-action: none;
+    overscroll-behavior: none;
+}
+
+
+/* ============================================ */
+/* CSS A6 - PHONE CONTAINER                     */
+/* ============================================ */
+.phone-container {
+    position: relative;
+    width: 393px;
+    min-height: 852px;
+    background: var(--page-bg);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    overflow: hidden;
+    transition: background 0.4s ease;
+}
+
+@media (min-width: 500px) {
+    .phone-container {
+        border-radius: 45px;
+        border: 10px solid #0f0f0f;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .phone-container {
+        width: 100vw;
+        min-height: 100vh;
+        max-width: 100%;
+    }
+}
