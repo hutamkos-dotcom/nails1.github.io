@@ -1,0 +1,34 @@
+// ============================================
+// LOGIN
+// ============================================
+function initLogin() {
+    const loginForm = $('loginForm');
+    const loginEmail = $('loginEmail');
+    const loginPassword = $('loginPassword');
+    const passwordToggle = $('passwordToggle');a
+    const stayLoggedIn = $('stayLoggedIn');
+    const forgotPassword = $('forgotPassword');
+    const facebookLogin = $('facebookLogin');
+    const googleLogin = $('googleLogin');
+    const registerBtn = $('registerBtn');
+
+    passwordToggle.addEventListener('click', () => {
+        loginPassword.type = loginPassword.type === 'password' ? 'text' : 'password';
+        passwordToggle.classList.toggle('active');
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = loginEmail.value.trim();
+        const pw = loginPassword.value.trim();
+        if (!email || !pw) { showResult(`<h2>Hiányzó adatok</h2><p>Töltsd ki mindkét mezőt!</p>`); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showResult(`<h2>Érvénytelen email</h2><p>Adj meg érvényes email címet!</p>`); return; }
+        showResult(`<h2>Bejelentkezés</h2><p>Sikeres kísérlet! 🎉</p><p>Email: ${email}</p>`);
+    });
+
+    forgotPassword.addEventListener('click', (e) => { e.preventDefault(); showResult(`<h2>Jelszó helyreállítás</h2><p>Fejlesztés alatt.</p>`); });
+    stayLoggedIn.addEventListener('click', (e) => { e.preventDefault(); stayLoggedIn.classList.toggle('active'); });
+    facebookLogin.addEventListener('click', () => showResult(`<h2>Facebook</h2><p>Hamarosan. 📘</p>`));
+    googleLogin.addEventListener('click', () => showResult(`<h2>Google</h2><p>Hamarosan. 🔍</p>`));
+    registerBtn.addEventListener('click', () => showResult(`<h2>Regisztráció</h2><p>Hamarosan. 💅</p>`));
+}
